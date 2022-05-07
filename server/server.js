@@ -15,5 +15,6 @@ app.use(function(req, res, next) {
   });
 
 app.get('/getcode', (req,res) =>{
-    console.log('get code request');
+    console.log('get code request from '+ req.ip);
+    res.send("code request not implemented yet");
 })
