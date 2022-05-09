@@ -9,8 +9,7 @@ function Navbar() {
         <div className='navbar'>
             <ul>
                 <li><span className='txtLogo'>2Convo</span></li> 
-                <li><FontAwesomeIcon icon={faMessage} className='msgIcon'></FontAwesomeIcon></li>
-                
+                <li><FontAwesomeIcon icon={faMessage} className='msgIcon'></FontAwesomeIcon></li>               
             </ul>
         </div>  
     )
