@@ -28,13 +28,8 @@ const RequestCode = () => {
     
     return(
         <div className='RequestCode' style={{display:'flex', alignItems:'center', justifyContent: 'space-around'}}>
-            <ul>
-                <li><button className='btnRequestCode' onClick={handleGetCode}>Request Code</button></li>
-                <li><Text text={code}></Text></li>
-                <li></li>
-                
-            </ul>
-            <span>(Press the button to get code [available for 24 hr])</span>
+            <button className='btnRequestCode' onClick={handleGetCode}>Request new Code</button>
+            <Text text={code}></Text>
         </div>
     )
 } 
