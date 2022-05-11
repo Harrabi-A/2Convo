@@ -1,43 +1,52 @@
 html, body {
   min-height: 100%;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(240, 240, 240, 1) 100%) no-repeat top;
-  /*background-color: #ffff ;*/
-  
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(240, 240, 240, 1) 100%) no-repeat top;  
 }
 
-li{
-  display: inline;
+
+.navbar{ 
+  position: sticky;
+  top: 0;
+  background: linear-gradient(to bottom right, rgb(151, 151, 157), rgb(75, 112, 87));
+  border-width: 2px;
+  border-style:solid;
+  border-color: #56565e;
+  padding-left: 4px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display:flex;
+  flex-direction: row;
+  justify-content: inline;
+  flex-wrap: nowrap;
 }
 
 .txtLogo{
   font-size: 30px;
+  color: #ffff;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-/*.App{
-  background-color: #464f4f;
-}*/
-
-
-.navbar{ 
-  border-width: 2px;
-  border-style:solid;
-  border-color: #56565e;
-  padding-left: 40px;
-  font-family: sans-serif;
+  margin-left: 18px;
+  margin-right: 18px;
+  flex-grow: 2;
 }
 
+.code{
+  padding-right: 6px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
 .btnRequestCode{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   padding-left: 10px;
   padding-top: 8px;
   padding-bottom: 8px;
   padding-right: 10px;
-  margin-top: 4%;
-  margin-left: 6%;
+  /*margin-top: 4%;
+  margin-left: 6%;*/
   background-color: #30593a;
   color: #ffff;
   border-style: initial;
-  font-size: 18px;
+  font-size: 14px;
   font-family: sans-serif;
   border-color: #30593a;
   border-width: 2px;
@@ -64,6 +73,7 @@ li{
 }
 
 .txtRequestConvo{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   padding-left: 10px;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -79,6 +89,7 @@ hr{
 }
 
 .btnRequestConvo{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   padding-left: 10px;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -101,10 +112,62 @@ hr{
 
 .msgIcon{
   margin-left: 60%;
+  margin-bottom: auto;
+  margin-top: auto;
   font-size: 22px;
   color: #30593a;
 }
 
 :hover.msgIcon{
   color: #b20202;
+}
+
+.ChatBox{
+  width: 60%;
+  height: 380px;
+  margin: auto;
+  font-size: 20px;
+  border-width: 2px;
+  border-style:dashed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.sendMsg{
+  background-color: #a6a6b5;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.btnSend{
+  font-size: 13px;
+  padding-left: 6%;
+  margin-left: 10px;
+  padding-right: 6%;
+  background-color: #30593a;
+  color: #ffff;
+  border-style: initial;
+  border-width: 2px;
+  border-color: #ffff;
+}
+
+:hover.btnSend{
+  background-color: #000000;
+}
+
+.txtSend{
+  font-size: 18px;
+  width: 50%;
+  height: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-style: initial;
+  border-width: 2px;
+  border-color: #ffff;
 }
