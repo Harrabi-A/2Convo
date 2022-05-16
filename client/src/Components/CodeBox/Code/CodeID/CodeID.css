@@ -1,0 +1,10 @@
+.codeID{
+    font-weight: 700;
+    text-align: center;
+
+    margin-top: 4%;
+    margin-left: 4%;
+    margin-bottom: 4%;
+
+    cursor: copy;
+}
