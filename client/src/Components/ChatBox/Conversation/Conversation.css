@@ -1,12 +1,49 @@
-.noConvo{
-    height: 80%;
-    width: 80%;
-    
-    background-color: transparent;
-    
+.styleNoConvo, .styleWaiting{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
 
+.noConvo{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    flex-direction: column;
 
 }
+
+.iconPaperPlane{
+    font-size: 100px;
+}
+
+.txtNoConvo{
+    margin-top: 30px;   
+}
+
+.waiting{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.txtWaiting{
+    margin-top: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
 
 .styleConversation{
     position: relative;
