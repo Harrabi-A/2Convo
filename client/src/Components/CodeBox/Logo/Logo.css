@@ -1,0 +1,14 @@
+.logo{
+    color: rgb(62, 43, 43);
+    font-size: 30px;
+    text-align: center;
+
+    margin-top: 10%;
+    border-bottom: 2px dashed rgb(62, 43, 43) ;
+
+    flex: 1;
+}
+
+.msgIcon{
+    padding-bottom: 8px;
+}
