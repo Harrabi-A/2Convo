@@ -1,0 +1,25 @@
+.noConvo{
+    height: 80%;
+    width: 80%;
+    
+    background-color: transparent;
+    
+
+
+}
+
+.styleConversation{
+    position: relative;
+    top: 5%;
+    left: 10%;
+    height: 90%;
+    width: 80%;
+    background-color: #ffff;
+    border-radius: 15px;
+}
+
+.conversation{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(119, 57, 57, 0.242);
+}
