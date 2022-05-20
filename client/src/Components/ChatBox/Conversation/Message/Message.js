@@ -1,10 +1,11 @@
 import React from "react";
-import './Message'
+import './Message.css'
 
-const Message = () =>{
+const Message = ({message,own}) =>{
+
     return(
-        <div className="message">
-            <span>Message</span>
+        <div className={own ? "messageOwn" : "message"}>
+            <span>{message}</span>
         </div>
     )
 }
