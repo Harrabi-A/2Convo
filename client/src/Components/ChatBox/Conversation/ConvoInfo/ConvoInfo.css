@@ -1,4 +1,27 @@
 .convoInfo{
-    flex: 1;
-    
+    flex: 0.75;
+
+    position: relative;
+
+    border-bottom-width: 3px;
+    border-bottom-style: dashed;
+    border-bottom-color: rgb(62, 43, 43);
+
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+
+.txtInfo{
+    color: rgb(62, 43, 43);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+}
+
+.contact{
+    font-weight: 700;
+}
+
+.date{
+    font-weight: 700;
 }
