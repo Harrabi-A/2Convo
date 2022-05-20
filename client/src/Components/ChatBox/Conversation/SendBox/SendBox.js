@@ -4,8 +4,8 @@ import './SendBox.css';
 const SendBox = () =>{
     return(
         <div className="sendBox">
-            <input  placeholder="type.."/>
-            <button> Send </button>
+            <input className="txtMessage" type={'text'} placeholder="type.."/>
+            <button className="btnSend"> Send </button>
         </div>
     )
 }
