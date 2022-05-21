@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Conversation.css'
 
 import ConvoInfo from './ConvoInfo/ConvoInfo';
@@ -12,6 +12,15 @@ import { ClimbingBoxLoader } from 'react-spinners';
 
 
 const Conversation = (props) =>{
+    const [Messages, setMessages] = useState(
+        [
+            {
+                message: 'Message1',
+                own: true
+            }
+        ]
+    )
+
     return(
         props.convoStatus === "conversation" ? (
             // Render this if conversation is established
