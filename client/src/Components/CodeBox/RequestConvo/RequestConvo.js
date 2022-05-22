@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './RequestConvo.css';
 
+import {useDispatch, useSelector} from "react-redux";
+import {bindActionCreators} from "redux";
+import {actionCreators} from "../../../State/index"
+
 const RequestConvo = () =>{
     const [codeIDReq, setCodeIDReq] = useState('');
 
     // State to store current situation
-    const [activityState, setActivityState] = useState({
+    /*const [activityState, setActivityState] = useState({
         convoState: 'noConvo',
         waiting: false
-    })
+    })*/
 
     const handlePaste = () =>{
         navigator.clipboard.readText()
@@ -25,16 +29,14 @@ const RequestConvo = () =>{
 
     },[codeIDReq])
 
-    // Request made 
-    // TODO read code & connecct server 
-    const handleRequestConvo = () =>{
-        setActivityState({
-            convoState:'noconvo',
-            waiting: true
-        })
-        console.log(activityState.convoState+ " "+ activityState.waiting)
-    }
+    /*const state = useSelector((state) => state.convoState);*/
 
+    const dispatch = useDispatch();
+    const {setConvoState, unsetConvoState} = bindActionCreators(actionCreators, dispatch);
+
+    const handleRequestConvo = () =>{
+        setConvoState()
+    }
 
     return(
         <div className='requestConvo'>
@@ -44,7 +46,7 @@ const RequestConvo = () =>{
                     <input type={'text'} className='txtPaste' placeholder='Paste here Convo code' maxLength={'10'} defaultValue={codeIDReq}></input>
                     <button className='btnPaste' onClick={handlePaste}>paste</button>
                 </div>    
-                <button className='btnRequest' onClick={handleRequestConvo}>Request Convo</button>
+                <button className='btnRequest' /*onClick={() => setConvoState()}*/ onClick={handleRequestConvo}>Request Convo</button>
             </div>
         </div>
     )
