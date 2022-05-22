@@ -5,8 +5,8 @@ import ChatBox from './Components/ChatBox/ChatBox'
 function App() {
   return (
     <div className="App">
-      <CodeBox/>
-      <ChatBox/>
+        <CodeBox/>
+        <ChatBox/>
     </div>
   );
 }
