@@ -10,6 +10,8 @@ import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 
 import { ClimbingBoxLoader } from 'react-spinners';
 
+import {useSelector} from "react-redux"
+
 
 const Conversation = (props) =>{
     const [Messages, setMessages] = useState(
@@ -21,8 +23,13 @@ const Conversation = (props) =>{
         ]
     )
 
+    const convoState = useSelector((State) => State.convoState);
+    const waitingState = useSelector((state) => state.waitingState);
+   /*console.log("convoState: "+convoState)
+    console.log("waitingState"+waitingState)*/
+
     return(
-        props.convoStatus === "conversation" ? (
+        /*convoState === "conversation"*/ convoState ? (
             // Render this if conversation is established
             <div className='styleConversation'>
                 <div className='conversation'>
@@ -36,7 +43,7 @@ const Conversation = (props) =>{
                         <Message own={true} message={"Message5"}/>
                         <Message own={true} message={"Message6"}/>
                         <Message own={true} message={"Message7"}/>
-                        <Message own={true} message={"Message8"}/>
+                        <Message own={false} message={"Message8"}/>
                         <Message own={true} message={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ante elit, porttitor placerat sagittis quis, aliquam a lectus."}/>
                     </div>
                     </div>
@@ -45,7 +52,7 @@ const Conversation = (props) =>{
             </div>
             
         ) : (
-            props.noConvoStatus == "wainting"? (
+            waitingState === "wainting"? (
                 // Render this if convo request was made
                 <div className='styleWaiting'>
                     <div className='waiting'>
