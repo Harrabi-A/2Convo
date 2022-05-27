@@ -6,19 +6,40 @@ import Message from './Message/Message';
 import SendBox from './SendBox/SendBox';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
+import {faMessage, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 
 import { ClimbingBoxLoader } from 'react-spinners';
 
 import {useSelector} from "react-redux"
+
+import io from 'socket.io-client'
+
+const socket = io.connect("http://localhost:3030")
+socket.emit("init","Messages");
 
 
 const Conversation = (props) =>{
     const [Messages, setMessages] = useState(
         [
             {
-                message: 'Message1',
+                id: 0,
+                message: 'Message map generated',
                 own: true
+            },
+            {
+                id: 1,
+                message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ante elit, porttitor placerat sagittis quis, aliquam a lectus.',
+                own: false
+            },
+            {
+                id: 2,
+                message: 'Message 2',
+                own: true
+            },
+            {
+                id: 3,
+                message: 'Message 3',
+                own: false
             }
         ]
     )
@@ -36,15 +57,11 @@ const Conversation = (props) =>{
                     <ConvoInfo />
                     <div className='messagesBox'>
                     <div className='messages'>
-                        <Message own={true} message={"Message1"}/>
-                        <Message own={false} message={"Message2"}/>
-                        <Message own={true} message={"Message3"}/>
-                        <Message own={true} message={"Message4"}/>
-                        <Message own={true} message={"Message5"}/>
-                        <Message own={true} message={"Message6"}/>
-                        <Message own={true} message={"Message7"}/>
-                        <Message own={false} message={"Message8"}/>
-                        <Message own={true} message={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ante elit, porttitor placerat sagittis quis, aliquam a lectus."}/>
+                        {Messages.map((e)=>{
+                            return (
+                                <Message key={e.id} own={e.own} message={e.message}/>
+                            );
+                        })}
                     </div>
                     </div>
                     <SendBox />
@@ -64,7 +81,7 @@ const Conversation = (props) =>{
                 // Render this if request isn't made
                 <div className='styleNoConvo'>
                     <div className='noConvo'>
-                        <FontAwesomeIcon icon={faPaperPlane} className="iconPaperPlane"></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faMessage} className="iconPaperPlane"></FontAwesomeIcon>
                         <span className='txtNoConvo'>Share your code with friend</span>
                     </div>
                 </div>
