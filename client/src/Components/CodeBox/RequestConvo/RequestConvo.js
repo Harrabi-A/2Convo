@@ -6,13 +6,9 @@ import {bindActionCreators} from "redux";
 import {actionCreators} from "../../../State/index"
 
 const RequestConvo = () =>{
+    // user input
     const [codeIDReq, setCodeIDReq] = useState('');
 
-    // State to store current situation
-    /*const [activityState, setActivityState] = useState({
-        convoState: 'noConvo',
-        waiting: false
-    })*/
 
     const handlePaste = () =>{
         navigator.clipboard.readText()
@@ -31,11 +27,16 @@ const RequestConvo = () =>{
 
     /*const state = useSelector((state) => state.convoState);*/
 
+    const ownKeys = useSelector((values) => values.keys);
+    //console.log(ownKeys)
+
     const dispatch = useDispatch();
     const {setConvoState, unsetConvoState} = bindActionCreators(actionCreators, dispatch);
 
     const handleRequestConvo = () =>{
+        //TODO Server Request
         setConvoState()
+
     }
 
     return(
