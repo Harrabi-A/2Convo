@@ -14,10 +14,6 @@ import { bindActionCreators } from "redux";
 
 import io from "socket.io-client";
 
-/*const socket = io.connect("http://localhost:3030")
-socket.emit("init","ownPublicKey");*/
-
-
 
 const Code = () =>{
     const [copied, setCopied] = useState(false);
@@ -26,35 +22,15 @@ const Code = () =>{
 
     const socket = useSelector((value) => value.socket)
     console.log(socket)
-
+    socket.emit("init",ownPublicKey)
     
-    // get personal convo code from server and save it in redux
-   /* useEffect(() => { 
-        /*
-        // create a new XMLHttpRequest
-        var xhr = new XMLHttpRequest()
-
-        // get a callback when the server responds
-        xhr.addEventListener('load', () => {
-            // update the state of the component with the result here
-            setCodeID(xhr.responseText)
+    useEffect(()=>{
+        socket.on("initResponse", (data) => {
+            setCodeID(data);
         })
+    },[socket])
 
-        
-        // open the request with the verb and the url
-        xhr.open('GET', 'http://127.0.0.1:8080/getcode')
-        // send the request
-        xhr.send("prova")*/
 
-        
-        
-
-    //}, [])
-    
-
-    /*console.log(ownPublicKey)*/
-    //const codeID = useSelector((value) => value.codeID)
-    /*console.log(code)*/
     const dispatch = useDispatch();
     const {setCodeID} = bindActionCreators(actionCreators, dispatch);
     //setCodeID("1234")
@@ -63,8 +39,7 @@ const Code = () =>{
     return(
         <div className="code">
             <span className="txtInfoCode">Your Convo code:</span>
-            
-            
+                       
             <>
                 <CodeID codeID={codeID} />
                 
