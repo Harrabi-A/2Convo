@@ -24,6 +24,7 @@ const Code = () =>{
     console.log(socket)
     socket.emit("init",ownPublicKey)
     
+    // execute when server response
     useEffect(()=>{
         socket.on("initResponse", (data) => {
             setCodeID(data);
@@ -33,7 +34,6 @@ const Code = () =>{
 
     const dispatch = useDispatch();
     const {setCodeID} = bindActionCreators(actionCreators, dispatch);
-    //setCodeID("1234")
     const codeID = useSelector((value) => value.codeID)
 
     return(
