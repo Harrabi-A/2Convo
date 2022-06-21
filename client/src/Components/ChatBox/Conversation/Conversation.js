@@ -69,7 +69,7 @@ const Conversation = (props) =>{
             </div>
             
         ) : (
-            waitingState === "wainting"? (
+            waitingState ? (
                 // Render this if convo request was made
                 <div className='styleWaiting'>
                     <div className='waiting'>
