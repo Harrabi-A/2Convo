@@ -73,3 +73,9 @@
 
     cursor: pointer;
 }
+
+.warningText{
+    margin-top: 5px;
+    font-size: 16px;
+    color: #b20202;
+}
