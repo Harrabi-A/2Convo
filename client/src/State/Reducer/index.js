@@ -5,7 +5,7 @@ import Keys from "./Keys";
 import WaitingStateReducer from "./WaitingStateReducer";
 import Socket from "./Socket";
 import Messages from "./Messages";
-import ConvoerPubliKey from "./convoerPublicKey";
+import ConvoerPublicKey from "./ConvoerPublicKey";
 
 const reducers = combineReducers({
     convoState: ConvoStateReducer,
@@ -14,7 +14,7 @@ const reducers = combineReducers({
     codeID: CodeIDState,
     socket: Socket,
     messages: Messages,
-    convoerPublicKey: ConvoerPubliKey
+    convoerPublicKey: ConvoerPublicKey
 })
 
 export default reducers;
