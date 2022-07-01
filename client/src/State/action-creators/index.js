@@ -58,3 +58,12 @@ export const deleteAllMessages = () => {
         })
     }
 }
+
+export const setConvoerPublicKey = (code) => {
+    return(dispatch) => {
+        dispatch({
+            type: "setConvoerPublicKey",
+            payload: code
+        })
+    }
+}
