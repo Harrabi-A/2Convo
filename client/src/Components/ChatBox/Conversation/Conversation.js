@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Conversation.css'
 
 import ConvoInfo from './ConvoInfo/ConvoInfo';
@@ -6,58 +6,56 @@ import Message from './Message/Message';
 import SendBox from './SendBox/SendBox';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faMessage, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
+import {faMessage} from '@fortawesome/free-solid-svg-icons';
 
 import { ClimbingBoxLoader } from 'react-spinners';
 
 import {useSelector} from "react-redux"
 
+import { actionCreators } from "../../../State";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+
 import io from 'socket.io-client'
 
-const socket = io.connect("http://localhost:3030")
-socket.emit("init","Messages");
 
 
-const Conversation = (props) =>{
-    const [Messages, setMessages] = useState(
-        [
-            {
-                id: 0,
-                message: 'Message map generated',
-                own: true
-            },
-            {
-                id: 1,
-                message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ante elit, porttitor placerat sagittis quis, aliquam a lectus.',
-                own: false
-            },
-            {
-                id: 2,
-                message: 'Message 2',
-                own: true
-            },
-            {
-                id: 3,
-                message: 'Message 3',
-                own: false
-            }
-        ]
-    )
-
+const Conversation = () =>{
+    const messages = useSelector((value) => value.messages);
     const convoState = useSelector((State) => State.convoState);
     const waitingState = useSelector((state) => state.waitingState);
-   /*console.log("convoState: "+convoState)
-    console.log("waitingState"+waitingState)*/
+    
+    const socket = useSelector((value) => value.socket)
+
+    const [dateOfConvo, setDateOfConvo] = useState('')
+    const [otherConvoID, setOtherConvoID] = useState()
+    
+
+    useEffect(() => {
+        socket.on("startConvo", (code,dateConvo)=>{
+            setDateOfConvo(dateConvo)
+            setOtherConvoID(code)
+            
+            unsetWaiting()
+            setConvoState()
+            console.log("convo established with ",code," on ",dateOfConvo)
+        })
+    },[socket])
+
+    const dispatch = useDispatch();
+    const {setConvoState, unsetConvoState} = bindActionCreators(actionCreators, dispatch);
+    const {setWaiting, unsetWaiting} = bindActionCreators(actionCreators, dispatch);
+
 
     return(
-        /*convoState === "conversation"*/ convoState ? (
+        convoState ? (
             // Render this if conversation is established
             <div className='styleConversation'>
                 <div className='conversation'>
-                    <ConvoInfo />
+                    <ConvoInfo otherCode={otherConvoID} date={dateOfConvo}/>
                     <div className='messagesBox'>
                     <div className='messages'>
-                        {Messages.map((e)=>{
+                        {messages.map((e)=>{
                             return (
                                 <Message key={e.id} own={e.own} message={e.message}/>
                             );
