@@ -1,5 +1,4 @@
-
-export const ConvoerPubliKey = ( convoerPublicKey='', action ) => {
+export const ConvoerPublicKey = ( convoerPublicKey='', action ) => {
     switch(action){
         case "setConvoerPublicKey":
             return action.payload;
@@ -8,4 +7,4 @@ export const ConvoerPubliKey = ( convoerPublicKey='', action ) => {
     }
 }
 
-export default ConvoerPubliKey;
+export default ConvoerPublicKey;
