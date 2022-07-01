@@ -1,9 +1,9 @@
 import React from "react";
 import './ConvoInfo.css';
 
-const ConvoInfo = () =>{
-    const contact = "1234567";
-    const date = "2022/05/18";
+const ConvoInfo = (props) =>{
+    const contact = props.otherCode;
+    const date = props.date;
 
     return(
         <div className="convoInfo">
