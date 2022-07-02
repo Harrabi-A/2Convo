@@ -18,33 +18,61 @@ import { bindActionCreators } from "redux";
 
 import io from 'socket.io-client'
 
-
+import JSEncrypt from 'jsencrypt';
 
 const Conversation = () =>{
+    const ownPrivateKey = useSelector((value) => value.keys.ownPrivateKey)
+    var decrypt = new JSEncrypt();
+    decrypt.setPrivateKey(ownPrivateKey);
+
+
     const messages = useSelector((value) => value.messages);
     const convoState = useSelector((State) => State.convoState);
     const waitingState = useSelector((state) => state.waitingState);
     
+    const [numMessages, setNumMessages] = useState(messages.length)
+
     const socket = useSelector((value) => value.socket)
 
     const [dateOfConvo, setDateOfConvo] = useState('')
     const [otherConvoID, setOtherConvoID] = useState()
     
-
-    useEffect(() => {
-        socket.on("startConvo", (code,dateConvo)=>{
-            setDateOfConvo(dateConvo)
-            setOtherConvoID(code)
-            
-            unsetWaiting()
-            setConvoState()
-            console.log("convo established with ",code," on ",dateOfConvo)
-        })
-    },[socket])
-
     const dispatch = useDispatch();
     const {setConvoState, unsetConvoState} = bindActionCreators(actionCreators, dispatch);
     const {setWaiting, unsetWaiting} = bindActionCreators(actionCreators, dispatch);
+    const {setConvoerPublicKey} = bindActionCreators(actionCreators, dispatch);
+    const {addNewMessage} = bindActionCreators(actionCreators, dispatch);
+
+    useEffect(() => {
+        socket.on("startConvo", (code, dateConvo, key)=>{
+            setDateOfConvo(dateConvo)
+            setOtherConvoID(code)
+            
+            setConvoerPublicKey(key)
+
+            unsetWaiting()
+            setConvoState()
+            console.log("convo established with ",code," with public key ",key)
+        })
+
+        socket.on("newMessage", (cipherText) =>{
+            console.log("messages length ",messages.length)
+            console.log("received Text ", cipherText)
+            const pleinText = decrypt.decrypt(cipherText)
+            const msg = {
+                id: ++messages.length,
+                message: pleinText,
+                own: false
+            }
+            addNewMessage(msg)
+            console.log("messages length ",messages.length)
+            
+        })
+    },[socket])
+
+    setInterval(()=>{setNumMessages(messages.length)}, 500)
+
+    useEffect( () => {},[numMessages])
 
 
     return(
