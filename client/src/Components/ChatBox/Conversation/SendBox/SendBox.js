@@ -11,7 +11,6 @@ import { type } from "@testing-library/user-event/dist/type";
 import JSEncrypt from "jsencrypt";
 
 const SendBox = () =>{
-    //var placehold= "type..."
     var text 
     const [inputText, setInputText] = useState()
     const handleTextChange = (event) =>{
