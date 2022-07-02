@@ -5,7 +5,7 @@ import Conversation from './Conversation/Conversation';
 const ChatBox = () => {
     return(
         <div className='chatBox'>
-            <Conversation /*convoStatus={'conversation'} noConvoStatus={'null'}*//>
+            <Conversation />
         </div>
     );
 }
