@@ -21,8 +21,15 @@ const Code = () =>{
     const ownPublicKey = useSelector((value) => value.keys.ownPublicKey )
 
     const socket = useSelector((value) => value.socket)
-    console.log(socket)
-    socket.emit("init",ownPublicKey)
+    //console.log(socket)
+    useEffect(() => {
+        // Runs after the first render() lifecycle
+        
+        socket.emit("init",ownPublicKey)
+        console.log("init request send was made")
+    },[])
+
+    
     
     // execute when server response
     useEffect(()=>{
