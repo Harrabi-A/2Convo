@@ -100,7 +100,7 @@ const Conversation = () =>{
                 <div className='styleWaiting'>
                     <div className='waiting'>
                        <ClimbingBoxLoader color='#ffff' size={16} />
-                       <span className='txtWaiting'>Request has been made, wainting for match ...</span>
+                       <span className='txtWaiting'>Request has been made, waiting for match ...</span>
                     </div>
                 </div>
             ) : (
