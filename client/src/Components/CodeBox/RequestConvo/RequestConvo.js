@@ -56,11 +56,13 @@ const RequestConvo = () =>{
     // wating for message from server
     useEffect(() => {
         socket.on("convoIDNotFound", () =>{
+            // TODO UI 
             console.log("convoId not found")
             setWarningText(true)
         })
         socket.on("convoIDFound", () =>{
             //convoID exist and request has been made, waiting for a eequest match
+            setWarningText(false)
             setWaiting()
         })       
     },[socket])
