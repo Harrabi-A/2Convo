@@ -47,9 +47,12 @@ const RequestConvo = () =>{
 
     const codeID = useSelector((value) => value.codeID)
     const handleRequestConvo = () =>{
-        //setWaiting()
-        socket.emit("requestConvo",codeID.toString(),codeIDReq.toString())
-        console.log(codeID," request a convo from ",codeIDReq)
+        if(codeID.toString() !== codeIDReq.toString()){
+            socket.emit("requestConvo",codeID.toString(),codeIDReq.toString())
+            console.log(codeID," request a convo from ",codeIDReq)
+        }else{
+            setWarningText(true)
+        }
     }
 
     const codeError = "Code not found !!"
